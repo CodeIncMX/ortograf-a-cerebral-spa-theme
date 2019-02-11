@@ -51,9 +51,9 @@ function oc_api_email_appointment($data) {
         try {
             // $headers = "Content-type: text/html; charset=charset=UTF-8";
             $headers = array('Content-Type: text/html; charset=UTF-8');
-            $headers[] = 'Cc: Sandro E. Martínez <zanddro@gmail.com>';
-//            wp_mail("mirna@ortografiacerebral.com", "SOLICITUD DE CONSULTA", $content, $headers );
-            wp_mail("codeincmx@gmail.com", "SOLICITUD DE CONSULTA", $content, $headers );
+            $headers[] = 'Cc: Code Inc. México <codeincmx@gmail.com>';
+            wp_mail("mirna@ortografiacerebral.com", "SOLICITUD DE CONSULTA", $content, $headers );
+            // wp_mail("codeincmx@gmail.com", "SOLICITUD DE CONSULTA", $content, $headers );
             $result['success'] = true;
             $result['message'] = 'success';
 
