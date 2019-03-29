@@ -50,10 +50,11 @@ function oc_api_email_appointment($data) {
 
         try {
             // $headers = "Content-type: text/html; charset=charset=UTF-8";
-            $headers = array('Content-Type: text/html; charset=UTF-8');
+            // $headers = array('Content-Type: text/html; charset=UTF-8');
             $headers[] = 'Cc: Code Inc. México <codeincmx@gmail.com>';
-            wp_mail("mirna@ortografiacerebral.com", "SOLICITUD DE CONSULTA", $content, $headers );
-            // wp_mail("codeincmx@gmail.com", "SOLICITUD DE CONSULTA", $content, $headers );
+            //PRODUCTION TODO: exchange commente lines
+            // wp_mail("mirna@ortografiacerebral.com", "SOLICITUD DE CONSULTA", $content, $headers );
+            wp_mail("codeincmx@gmail.com", "SOLICITUD DE CONSULTA", $content, $headers );
             $result['success'] = true;
             $result['message'] = 'success';
 
@@ -70,4 +71,14 @@ add_action('rest_api_init', function () {
         'methods' => 'POST',
         'callback' => 'oc_api_email_appointment'
     ));
+
+    remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+	add_filter( 'rest_pre_serve_request', function( $value ) {
+		header( 'Access-Control-Allow-Origin: *' );
+        header( 'Access-Control-Allow-Methods: POST' );
+		header( 'Access-Control-Allow-Credentials: true' );
+
+		return $value;
+		
+    });   
 });

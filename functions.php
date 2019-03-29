@@ -24,6 +24,7 @@ add_action( 'after_setup_theme', 'oc_setup' );
  */
 function oc_scripts() {
 	wp_enqueue_style( 'oc-style', get_stylesheet_uri() );
+	//PRODUCTION TODO: exchange commente lines
 	// wp_enqueue_script( 'oc-vue-js', 'http://localhost:8080/js/build.js', array(), false, true );
 	wp_enqueue_script( 'oc-vue-js', get_template_directory_uri() . '/js/build.js', array(), false, true );
 }
@@ -32,5 +33,7 @@ add_action( 'wp_enqueue_scripts', 'oc_scripts' );
 /**
  * Adding API routes & methods
  */
+function add_cors_http_header(){
+}
 require_once get_template_directory() . '/api/email.php';
 require_once get_template_directory() . '/api/menu.php';
