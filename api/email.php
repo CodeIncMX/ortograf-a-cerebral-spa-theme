@@ -50,7 +50,7 @@ function oc_api_email_appointment($data) {
 
         try {
             // $headers = "Content-type: text/html; charset=charset=UTF-8";
-            // $headers = array('Content-Type: text/html; charset=UTF-8');
+            $headers = array('Content-Type: text/html; charset=UTF-8');
             $headers[] = 'Cc: Code Inc. México <codeincmx@gmail.com>';
             //PRODUCTION TODO: exchange commente lines
             // wp_mail("mirna@ortografiacerebral.com", "SOLICITUD DE CONSULTA", $content, $headers );
@@ -76,7 +76,7 @@ add_action('rest_api_init', function () {
 	add_filter( 'rest_pre_serve_request', function( $value ) {
 		header( 'Access-Control-Allow-Origin: *' );
         header( 'Access-Control-Allow-Methods: POST' );
-		header( 'Access-Control-Allow-Credentials: true' );
+		header( 'Content-Type: application/json' );
 
 		return $value;
 		
